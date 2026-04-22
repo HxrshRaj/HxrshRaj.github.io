@@ -3,178 +3,421 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Raj | AI & Enterprise Consultant</title>
+    <title>Harsh Raj | Enterprise AI & Backend Consultant</title>
     <style>
+        /* CSS Variables for Premium Dark Slate Theme */
         :root {
-            --bg-color: #0a0a0a;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent: #3b82f6;
-            --card-bg: #171717;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-hover: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
+
+        /* Container & Layout */
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 24px;
         }
-        header {
-            text-align: center;
-            padding: 100px 0 50px 0;
-            border-bottom: 1px solid #333;
-        }
-        h1 {
-            font-size: 3rem;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-        .title {
-            color: var(--accent);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        .bio {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        .social-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin: 0 10px;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
-        }
-        .social-links a:hover {
-            color: var(--accent);
-        }
+
         section {
-            margin: 60px 0;
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        h2 {
-            font-size: 2rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 10px;
+
+        section:last-child {
+            border-bottom: none;
         }
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 8px;
         }
-        .project-card {
-            background-color: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #2a2a2a;
-            transition: transform 0.2s;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-        .project-card h3 {
-            margin-top: 0;
+
+        h2.section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
             color: #fff;
         }
-        .tags {
-            font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-            display: block;
+
+        h2.section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 20px;
         }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .narrative-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 24px;
+        }
+
+        .about-highlights {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons & Links */
         .btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 8px 16px;
-            background-color: transparent;
-            color: var(--text-main);
+            padding: 12px 24px;
+            background-color: var(--accent);
+            color: var(--bg-main);
             text-decoration: none;
-            border: 1px solid var(--text-muted);
-            border-radius: 4px;
-            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            margin-top: 24px;
         }
+
         .btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px var(--accent-glow);
         }
-        .skills-list {
+
+        .social-links {
+            margin-top: 32px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 32px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Tech Tags */
+        .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
-        .skill-tag {
-            background-color: var(--card-bg);
-            padding: 8px 15px;
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 4px 12px;
             border-radius: 20px;
-            border: 1px solid #333;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* Specialized Highlight Tag */
+        .highlight-tag {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Timeline Items (Experience, Academics, Leadership) */
+        .timeline-item {
+            margin-bottom: 40px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(255, 255, 255, 0.05);
+            transition: border-color 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            border-color: var(--accent);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .timeline-date {
+            color: var(--accent);
             font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .timeline-subheader {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        
+        .timeline-content {
+            color: var(--text-secondary);
+            margin-left: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            section { padding: 60px 0; }
+            .timeline-header { flex-direction: column; align-items: flex-start; }
+            .timeline-date { margin-left: 0; margin-top: 4px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Harsh Raj</h1>
-        <div class="title">Enterprise AI & Engineering Consultant</div>
-        <p class="bio">B.Tech CSE student specializing in architecting scalable backend systems, deploying Machine Learning models, and translating complex data into actionable business strategies.</p>
-        <div class="social-links">
-            <a href="mailto:harsh_raj@srmap.edu.in">Email</a>
-            <a href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank">LinkedIn</a>
-            <a href="https://github.com/HxrshRaj" target="_blank">GitHub</a>
-        </div>
-    </header>
-
-    <section id="projects">
-        <h2>Featured Architecture</h2>
-        <div class="project-grid">
+    <div class="container">
+        <section id="about" style="padding-top: 120px;">
+            <h1>Harsh Raj</h1>
+            <div class="subtitle">Enterprise AI Consultant & Backend Engineer</div>
             
-            <div class="project-card">
-                <h3>Enterprise RAG AI System</h3>
-                <span class="tags">Python • LangChain • Vector DB • NLP</span>
-                <p>An enterprise-grade Retrieval-Augmented Generation (RAG) tool allowing business stakeholders to query large corpuses of unstructured PDF contracts with zero LLM hallucinations.</p>
-                <a href="https://github.com/HxrshRaj/enterprise-rag-ai-system" target="_blank" class="btn">View Source</a>
+            <p class="narrative-text">I bridge the gap between rigorous engineering and measurable business value. As a Computer Science student with a consultant mindset, I don't just build systems; I seek to understand the systemic challenges they solve.</p>
+            
+            <p class="narrative-text">Beyond the IDE, I am fascinated by the intersection of human behavior, economics, and artificial intelligence. I excel in cross-functional environments where translating raw data telemetry into actionable product strategies is critical for scalable growth.</p>
+            
+            <div class="about-highlights">
+                <span class="highlight-tag">B.Tech CSE @ SRM University-AP</span>
+                <span class="highlight-tag">Data-Driven Problem Solver</span>
+                <span class="highlight-tag">System Architect Mindset</span>
             </div>
-
-            <div class="project-card">
-                <h3>Scalable Financial Engine</h3>
-                <span class="tags">Java • Spring Boot • PostgreSQL • REST</span>
-                <p>A robust backend architecture simulating high-concurrency B2B financial transactions. Features secure APIs and strict ACID compliance using advanced SQL.</p>
-                <a href="https://github.com/HxrshRaj/java-financial-microservices" target="_blank" class="btn">View Source</a>
+            
+            <a href="mailto:harsh_raj@srmap.edu.in" class="btn">Get in Touch</a>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank">LinkedIn</a>
+                <a href="https://github.com/HxrshRaj" target="_blank">GitHub</a>
+                <a href="#expertise">Explore Expertise</a>
             </div>
+        </section>
 
-            <div class="project-card">
-                <h3>B2B Churn Predictive ML</h3>
-                <span class="tags">Python • Scikit-Learn • Pandas • ML</span>
-                <p>A machine learning pipeline utilizing Random Forests to forecast enterprise client churn based on usage telemetry, translating data into retention strategies.</p>
-                <a href="https://github.com/HxrshRaj/predictive-b2b-churn-ml" target="_blank" class="btn">View Source</a>
+        <section id="expertise">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Artificial Intelligence & ML</h3>
+                    <p>Architecting Retrieval-Augmented Generation (RAG) tools, predictive NLP pipelines, and YOLO-based Computer Vision anomaly detection models.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">OpenCV</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Enterprise Backend</h3>
+                    <p>Designing secure, high-concurrency microservices, robust RESTful APIs, and strict ACID-compliant PostgreSQL database architectures.</p>
+                    <div class="tags">
+                        <span class="tag">Java Spring Boot</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">REST APIs</span>
+                        <span class="tag">Microservices</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Product & Strategy</h3>
+                    <p>Leveraging SQL and data analytics to define North Star metrics, execute A/B testing, and optimize Conversion Rates (CRO) and user journeys.</p>
+                    <div class="tags">
+                        <span class="tag">Data Analytics</span>
+                        <span class="tag">A/B Testing</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Product Metrics</span>
+                    </div>
+                </div>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <section id="academics">
+            <h2 class="section-title">Academic Foundation</h2>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="timeline-title">B.Tech in Computer Science and Engineering</div>
+                    <div class="timeline-date">Expected 2027</div>
+                </div>
+                <div class="timeline-subheader">SRM University, Andhra Pradesh</div>
+                
+                <div class="timeline-content">
+                    <p style="color: #fff; font-weight: 600; margin-bottom: 10px;">Cumulative CGPA: 9.02/10</p>
+                    <p>Focusing on applying advanced engineering concepts to large-scale B2B challenges. Consistently maintained technical excellence while exploring cross-disciplinary applications of AI.</p>
+                    <p style="margin-top: 10px;"><strong>Key Coursework:</strong> Data Structures & Algorithms (DSA), Operating Systems, DBMS, Computer Networks, Machine Learning.</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="skills">
-        <h2>Technical Arsenal</h2>
-        <div class="skills-list">
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">Java (Spring Boot)</span>
-            <span class="skill-tag">SQL & PostgreSQL</span>
-            <span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">NLP & RAG</span>
-            <span class="skill-tag">RESTful APIs</span>
-            <span class="skill-tag">Computer Vision (YOLO)</span>
-            <span class="skill-tag">Git & Architecture</span>
-        </div>
-    </section>
-</div>
+        <section id="experience">
+            <h2 class="section-title">Professional Narrative</h2>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="timeline-title">Research Intern - Computer Vision & AI</div>
+                    <div class="timeline-date">July 2025</div>
+                </div>
+                <div class="timeline-subheader">SRM University-AP (Under Prof. Niraj Upadhyaya)</div>
+                <ul class="timeline-content">
+                    <li>Developed a real-time crowd density and stampede prediction system using Python, OpenCV, and YOLO, processing live video streams at 30+ FPS.</li>
+                    <li>Engineered an automated anomaly detection model that reduced threat-alert latency by 40%, achieving a 92% accuracy rate in classifying high-risk crowd behaviors.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Architecture Portfolio</h2>
+            <div class="grid-2">
+                
+                <div class="card">
+                    <h3>FitMatch: AI Sizing Product Strategy</h3>
+                    <p>Authored the PRD and analytics roadmap for an MVP machine learning feature designed to recommend accurate apparel sizing, driving a reduction in Return-to-Origin (RTO) costs for fashion e-commerce.</p>
+                    <div class="tags">
+                        <span class="tag">Product Strategy</span>
+                        <span class="tag">Metrics Tracking</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Enterprise RAG Document Intelligence</h3>
+                    <p>Architected an AI tool allowing business stakeholders to query unstructured PDF contracts using natural language, utilizing FAISS vector databases to eliminate LLM hallucinations.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">Vector DB</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Scalable Financial Microservices</h3>
+                    <p>Designed a robust backend architecture using Java and Spring Boot to simulate high-concurrency B2B financial transaction processing with strict ACID compliance.</p>
+                    <div class="tags">
+                        <span class="tag">Java </span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                </div>
+                
+                 <div class="card">
+                    <h3>Predictive B2B Churn ML</h3>
+                    <p>Developed a machine learning pipeline utilizing Random Forests to forecast enterprise client churn based on simulated usage telemetry, translating data into actionable retention strategies.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scikit-Learn</span>
+                        <span class="tag">Pandas</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership">
+            <h2 class="section-title">Campus Leadership</h2>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <div class="timeline-title">Hackathon Team Lead</div>
+                    <div class="timeline-date">August 2024</div>
+                </div>
+                <div class="timeline-subheader">Cross-Functional IT Solution Delivery</div>
+                <ul class="timeline-content">
+                    <li>Led a 4-person engineering team to architect a prototype, define the data strategy, and pitch a data-driven business solution to stakeholders within a strict 48-hour deadline.</li>
+                </ul>
+            </div>
+            
+            </section>
+
+        <footer>
+            <p>&copy; 2026 Harsh Raj. Engineered for Impact.</p>
+        </footer>
+    </div>
 
 </body>
 </html>
