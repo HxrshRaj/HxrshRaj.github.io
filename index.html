@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Raj | AI & Enterprise Consultant</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #3b82f6;
+            --card-bg: #171717;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        header {
+            text-align: center;
+            padding: 100px 0 50px 0;
+            border-bottom: 1px solid #333;
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        .title {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .bio {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .social-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin: 0 10px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+        }
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        section {
+            margin: 60px 0;
+        }
+        h2 {
+            font-size: 2rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .project-card h3 {
+            margin-top: 0;
+            color: #fff;
+        }
+        .tags {
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            display: block;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: transparent;
+            color: var(--text-main);
+            text-decoration: none;
+            border: 1px solid var(--text-muted);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skill-tag {
+            background-color: var(--card-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Harsh Raj</h1>
+        <div class="title">Enterprise AI & Engineering Consultant</div>
+        <p class="bio">B.Tech CSE student specializing in architecting scalable backend systems, deploying Machine Learning models, and translating complex data into actionable business strategies.</p>
+        <div class="social-links">
+            <a href="mailto:harsh_raj@srmap.edu.in">Email</a>
+            <a href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank">LinkedIn</a>
+            <a href="https://github.com/HxrshRaj" target="_blank">GitHub</a>
+        </div>
+    </header>
+
+    <section id="projects">
+        <h2>Featured Architecture</h2>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <h3>Enterprise RAG AI System</h3>
+                <span class="tags">Python • LangChain • Vector DB • NLP</span>
+                <p>An enterprise-grade Retrieval-Augmented Generation (RAG) tool allowing business stakeholders to query large corpuses of unstructured PDF contracts with zero LLM hallucinations.</p>
+                <a href="https://github.com/HxrshRaj/enterprise-rag-ai-system" target="_blank" class="btn">View Source</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Scalable Financial Engine</h3>
+                <span class="tags">Java • Spring Boot • PostgreSQL • REST</span>
+                <p>A robust backend architecture simulating high-concurrency B2B financial transactions. Features secure APIs and strict ACID compliance using advanced SQL.</p>
+                <a href="https://github.com/HxrshRaj/java-financial-microservices" target="_blank" class="btn">View Source</a>
+            </div>
+
+            <div class="project-card">
+                <h3>B2B Churn Predictive ML</h3>
+                <span class="tags">Python • Scikit-Learn • Pandas • ML</span>
+                <p>A machine learning pipeline utilizing Random Forests to forecast enterprise client churn based on usage telemetry, translating data into retention strategies.</p>
+                <a href="https://github.com/HxrshRaj/predictive-b2b-churn-ml" target="_blank" class="btn">View Source</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Technical Arsenal</h2>
+        <div class="skills-list">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java (Spring Boot)</span>
+            <span class="skill-tag">SQL & PostgreSQL</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">NLP & RAG</span>
+            <span class="skill-tag">RESTful APIs</span>
+            <span class="skill-tag">Computer Vision (YOLO)</span>
+            <span class="skill-tag">Git & Architecture</span>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
