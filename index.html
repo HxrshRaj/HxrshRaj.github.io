@@ -1,423 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Raj | Enterprise AI & Backend Consultant</title>
+    <title>Harsh Raj | Backend & AI Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Variables for Premium Dark Slate Theme */
-        :root {
-            --bg-main: #0f172a;
-            --bg-card: #1e293b;
-            --bg-hover: #334155;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Container & Layout */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        section {
-            padding: 80px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        section:last-child {
-            border-bottom: none;
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -0.05em;
-            margin-bottom: 8px;
-        }
-
-        h2.section-title {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            color: #fff;
-        }
-
-        h2.section-title::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-left: 20px;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-bottom: 24px;
-        }
-
-        .narrative-text {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin-bottom: 24px;
-        }
-
-        .about-highlights {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        /* Buttons & Links */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--accent);
-            color: var(--bg-main);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            margin-top: 24px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px var(--accent-glow);
-        }
-
-        .social-links {
-            margin-top: 32px;
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* Grid Layouts */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        /* Cards */
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 32px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(56, 189, 248, 0.5);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        /* Tech Tags */
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        /* Specialized Highlight Tag */
-        .highlight-tag {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Timeline Items (Experience, Academics, Leadership) */
-        .timeline-item {
-            margin-bottom: 40px;
-            padding-left: 20px;
-            border-left: 2px solid rgba(255, 255, 255, 0.05);
-            transition: border-color 0.3s ease;
-        }
-        
-        .timeline-item:hover {
-            border-color: var(--accent);
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 8px;
-        }
-
-        .timeline-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .timeline-date {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            white-space: nowrap;
-            margin-left: 15px;
-        }
-
-        .timeline-subheader {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-        
-        .timeline-content {
-            color: var(--text-secondary);
-            margin-left: 20px;
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            section { padding: 60px 0; }
-            .timeline-header { flex-direction: column; align-items: flex-start; }
-            .timeline-date { margin-left: 0; margin-top: 4px; }
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text { background: linear-gradient(to right, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-300 antialiased selection:bg-blue-500 selection:text-white">
 
-    <div class="container">
-        <section id="about" style="padding-top: 120px;">
-            <h1>Harsh Raj</h1>
-            <div class="subtitle">Enterprise AI Consultant & Backend Engineer</div>
+    <nav class="fixed w-full z-50 top-0 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="#" class="text-xl font-bold text-white tracking-tight">H<span class="text-blue-500">.</span>Raj</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-blue-400 transition">About</a>
+                <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
+                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
+                <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
+            </div>
+            <a href="mailto:harsh_raj@srmap.edu.in" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-semibold transition">Contact Me</a>
+        </div>
+    </nav>
+
+    <header class="pt-32 pb-20 sm:pt-40 sm:pb-24 lg:pb-32 px-4 max-w-6xl mx-auto text-center md:text-left flex flex-col md:flex-row items-center">
+        <div class="md:w-2/3">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-4">
+                Architecting <span class="gradient-text">Scalable Systems</span> & AI Infrastructure.
+            </h1>
+            <p class="mt-4 text-lg sm:text-xl text-slate-400 max-w-2xl">
+                I am a Pre-Final Year CSE student specializing in High-Performance Backend Engineering (C++/Java), Cloud Computing, and Applied ML Pipelines.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
+                <a href="#" class="border border-slate-600 hover:border-blue-500 hover:text-blue-400 px-6 py-3 rounded-md font-semibold transition">View Resume</a>
+                <a href="https://github.com/HxrshRaj" target="_blank" class="text-slate-300 hover:text-white px-6 py-3 rounded-md font-semibold transition flex items-center gap-2"><i class="fab fa-github text-xl"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank" class="text-slate-300 hover:text-white px-6 py-3 rounded-md font-semibold transition flex items-center gap-2"><i class="fab fa-linkedin text-xl"></i> LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="experience" class="py-16 bg-slate-900 border-y border-slate-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-8">Work Experience</h2>
+            <div class="border-l border-blue-500 pl-6 ml-4">
+                <div class="mb-8 relative">
+                    <div class="absolute -left-[31px] top-1 h-4 w-4 rounded-full border-2 border-slate-900 bg-blue-500"></div>
+                    <h3 class="text-xl font-bold text-white">Research Intern – Backend & Computer Vision</h3>
+                    <p class="text-blue-400 font-semibold mb-2">SRM University AP | June 2024 – July 2024</p>
+                    <p class="text-slate-400 leading-relaxed">Engineered a scalable backend data pipeline to ingest and process high-frequency sensor fusion data. Optimized dense Optical Flow algorithms using <strong>C++ and OpenCV</strong>, reducing frame-processing latency by 40% to enable real-time integration with an LSTM inference backend.</p>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-16 mb-8">Achievements & Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center gap-4 hover:border-blue-500 transition">
+                    <i class="fa-brands fa-java text-3xl text-orange-500"></i>
+                    <div><h4 class="text-white font-bold">Oracle Certified Professional</h4><p class="text-sm text-slate-400">Java SE 17 Developer</p></div>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center gap-4 hover:border-blue-500 transition">
+                    <i class="fa-brands fa-google text-3xl text-blue-500"></i>
+                    <div><h4 class="text-white font-bold">Google Cloud Skill Badges</h4><p class="text-sm text-slate-400">AI & Machine Learning</p></div>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center gap-4 hover:border-blue-500 transition">
+                    <i class="fa-solid fa-code text-3xl text-yellow-500"></i>
+                    <div><h4 class="text-white font-bold">200+ DSA Problems Solved</h4><p class="text-sm text-slate-400">LeetCode (C++ / Java)</p></div>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 flex items-center gap-4 hover:border-blue-500 transition">
+                    <i class="fa-solid fa-trophy text-3xl text-purple-500"></i>
+                    <div><h4 class="text-white font-bold">Active Competitive Programmer</h4><p class="text-sm text-slate-400">CodeChef (C++ Algorithms)</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white mb-10">Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <p class="narrative-text">I bridge the gap between rigorous engineering and measurable business value. As a Computer Science student with a consultant mindset, I don't just build systems; I seek to understand the systemic challenges they solve.</p>
-            
-            <p class="narrative-text">Beyond the IDE, I am fascinated by the intersection of human behavior, economics, and artificial intelligence. I excel in cross-functional environments where translating raw data telemetry into actionable product strategies is critical for scalable growth.</p>
-            
-            <div class="about-highlights">
-                <span class="highlight-tag">B.Tech CSE @ SRM University-AP</span>
-                <span class="highlight-tag">Data-Driven Problem Solver</span>
-                <span class="highlight-tag">System Architect Mindset</span>
-            </div>
-            
-            <a href="mailto:harsh_raj@srmap.edu.in" class="btn">Get in Touch</a>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank">LinkedIn</a>
-                <a href="https://github.com/HxrshRaj" target="_blank">GitHub</a>
-                <a href="#expertise">Explore Expertise</a>
-            </div>
-        </section>
-
-        <section id="expertise">
-            <h2 class="section-title">Technical Arsenal</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Artificial Intelligence & ML</h3>
-                    <p>Architecting Retrieval-Augmented Generation (RAG) tools, predictive NLP pipelines, and YOLO-based Computer Vision anomaly detection models.</p>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">Scikit-Learn</span>
-                        <span class="tag">OpenCV</span>
-                    </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:-translate-y-2 hover:border-blue-500 transition duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <i class="fa-solid fa-money-bill-transfer text-3xl text-blue-500"></i>
+                    <a href="https://github.com/HxrshRaj/distributed-payment-gateway-springboot" target="_blank" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
                 </div>
-                <div class="card">
-                    <h3>Enterprise Backend</h3>
-                    <p>Designing secure, high-concurrency microservices, robust RESTful APIs, and strict ACID-compliant PostgreSQL database architectures.</p>
-                    <div class="tags">
-                        <span class="tag">Java Spring Boot</span>
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">REST APIs</span>
-                        <span class="tag">Microservices</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>Product & Strategy</h3>
-                    <p>Leveraging SQL and data analytics to define North Star metrics, execute A/B testing, and optimize Conversion Rates (CRO) and user journeys.</p>
-                    <div class="tags">
-                        <span class="tag">Data Analytics</span>
-                        <span class="tag">A/B Testing</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">Product Metrics</span>
-                    </div>
+                <h3 class="text-xl font-bold text-white mb-2">Event-Driven B2B Payment Gateway</h3>
+                <p class="text-slate-400 mb-4 text-sm">A high-concurrency microservices backend engine utilizing Kafka for event streaming and strict ACID compliance across PostgreSQL.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">Java</span>
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">Spring Boot</span>
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">Kafka</span>
                 </div>
             </div>
-        </section>
 
-        <section id="academics">
-            <h2 class="section-title">Academic Foundation</h2>
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div class="timeline-title">B.Tech in Computer Science and Engineering</div>
-                    <div class="timeline-date">Expected 2027</div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:-translate-y-2 hover:border-blue-500 transition duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <i class="fa-solid fa-brain text-3xl text-blue-500"></i>
+                    <a href="https://github.com/HxrshRaj/enterprise-genai-rag-engine" target="_blank" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
                 </div>
-                <div class="timeline-subheader">SRM University, Andhra Pradesh</div>
-                
-                <div class="timeline-content">
-                    <p style="color: #fff; font-weight: 600; margin-bottom: 10px;">Cumulative CGPA: 9.02/10</p>
-                    <p>Focusing on applying advanced engineering concepts to large-scale B2B challenges. Consistently maintained technical excellence while exploring cross-disciplinary applications of AI.</p>
-                    <p style="margin-top: 10px;"><strong>Key Coursework:</strong> Data Structures & Algorithms (DSA), Operating Systems, DBMS, Computer Networks, Machine Learning.</p>
+                <h3 class="text-xl font-bold text-white mb-2">Secure Enterprise GenAI Engine</h3>
+                <p class="text-slate-400 mb-4 text-sm">Dockerized full-stack RAG pipeline with a high-performance C++ FAISS backend to execute sub-millisecond vector similarity searches.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">Python</span>
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">FastAPI</span>
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">C++ (FAISS)</span>
                 </div>
             </div>
-        </section>
 
-        <section id="experience">
-            <h2 class="section-title">Professional Narrative</h2>
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div class="timeline-title">Research Intern - Computer Vision & AI</div>
-                    <div class="timeline-date">July 2025</div>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:-translate-y-2 hover:border-blue-500 transition duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <i class="fa-solid fa-chart-line text-3xl text-blue-500"></i>
+                    <a href="https://github.com/HxrshRaj/saas-churn-prediction-pipeline" target="_blank" class="text-slate-400 hover:text-white"><i class="fa-brands fa-github text-xl"></i></a>
                 </div>
-                <div class="timeline-subheader">SRM University-AP (Under Prof. Niraj Upadhyaya)</div>
-                <ul class="timeline-content">
-                    <li>Developed a real-time crowd density and stampede prediction system using Python, OpenCV, and YOLO, processing live video streams at 30+ FPS.</li>
-                    <li>Engineered an automated anomaly detection model that reduced threat-alert latency by 40%, achieving a 92% accuracy rate in classifying high-risk crowd behaviors.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2 class="section-title">Architecture Portfolio</h2>
-            <div class="grid-2">
-                
-                <div class="card">
-                    <h3>FitMatch: AI Sizing Product Strategy</h3>
-                    <p>Authored the PRD and analytics roadmap for an MVP machine learning feature designed to recommend accurate apparel sizing, driving a reduction in Return-to-Origin (RTO) costs for fashion e-commerce.</p>
-                    <div class="tags">
-                        <span class="tag">Product Strategy</span>
-                        <span class="tag">Metrics Tracking</span>
-                        <span class="tag">Python</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Enterprise RAG Document Intelligence</h3>
-                    <p>Architected an AI tool allowing business stakeholders to query unstructured PDF contracts using natural language, utilizing FAISS vector databases to eliminate LLM hallucinations.</p>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">Vector DB</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h3>Scalable Financial Microservices</h3>
-                    <p>Designed a robust backend architecture using Java and Spring Boot to simulate high-concurrency B2B financial transaction processing with strict ACID compliance.</p>
-                    <div class="tags">
-                        <span class="tag">Java </span>
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">PostgreSQL</span>
-                    </div>
-                </div>
-                
-                 <div class="card">
-                    <h3>Predictive B2B Churn ML</h3>
-                    <p>Developed a machine learning pipeline utilizing Random Forests to forecast enterprise client churn based on simulated usage telemetry, translating data into actionable retention strategies.</p>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Scikit-Learn</span>
-                        <span class="tag">Pandas</span>
-                    </div>
+                <h3 class="text-xl font-bold text-white mb-2">Predictive SaaS Churn Pipeline</h3>
+                <p class="text-slate-400 mb-4 text-sm">Data-intensive backend executing complex SQL queries to process high-volume telemetry for an XGBoost machine learning classifier.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">XGBoost</span>
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">SQL</span>
+                    <span class="bg-slate-800 text-slate-300 px-2 py-1 rounded">React</span>
                 </div>
             </div>
-        </section>
 
-        <section id="leadership">
-            <h2 class="section-title">Campus Leadership</h2>
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <div class="timeline-title">Hackathon Team Lead</div>
-                    <div class="timeline-date">August 2024</div>
-                </div>
-                <div class="timeline-subheader">Cross-Functional IT Solution Delivery</div>
-                <ul class="timeline-content">
-                    <li>Led a 4-person engineering team to architect a prototype, define the data strategy, and pitch a data-driven business solution to stakeholders within a strict 48-hour deadline.</li>
-                </ul>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-white mb-8">Technical Arsenal</h2>
+            <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+                <span class="border border-slate-700 bg-slate-950 text-slate-300 px-4 py-2 rounded-full font-medium">C++</span>
+                <span class="border border-slate-700 bg-slate-950 text-slate-300 px-4 py-2 rounded-full font-medium">Java (SE 17)</span>
+                <span class="border border-slate-700 bg-slate-950 text-slate-300 px-4 py-2 rounded-full font-medium">Python</span>
+                <span class="border border-blue-900 bg-blue-900/20 text-blue-400 px-4 py-2 rounded-full font-medium">Spring Boot</span>
+                <span class="border border-blue-900 bg-blue-900/20 text-blue-400 px-4 py-2 rounded-full font-medium">FastAPI</span>
+                <span class="border border-blue-900 bg-blue-900/20 text-blue-400 px-4 py-2 rounded-full font-medium">React.js</span>
+                <span class="border border-green-900 bg-green-900/20 text-green-400 px-4 py-2 rounded-full font-medium">PostgreSQL</span>
+                <span class="border border-green-900 bg-green-900/20 text-green-400 px-4 py-2 rounded-full font-medium">Redis</span>
+                <span class="border border-purple-900 bg-purple-900/20 text-purple-400 px-4 py-2 rounded-full font-medium">Docker</span>
+                <span class="border border-purple-900 bg-purple-900/20 text-purple-400 px-4 py-2 rounded-full font-medium">Google Cloud</span>
+                <span class="border border-purple-900 bg-purple-900/20 text-purple-400 px-4 py-2 rounded-full font-medium">Kafka</span>
             </div>
-            
-            </section>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2026 Harsh Raj. Engineered for Impact.</p>
-        </footer>
-    </div>
+    <footer class="bg-slate-950 py-8 border-t border-slate-800 text-center">
+        <p class="text-slate-500">© 2026 Harsh Raj. Designed for High Performance.</p>
+    </footer>
 
 </body>
 </html>
