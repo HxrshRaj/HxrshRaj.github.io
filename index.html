@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh Raj — AI/ML &amp; Software Engineer</title>
+<style>
+  :root{
+    --bg: #0F141B;
+    --bg-grid: rgba(79,209,197,0.055);
+    --panel: #171F29;
+    --panel-border: #26313F;
+    --text: #E7ECF1;
+    --text-muted: #8CA0B3;
+    --text-faint: #566577;
+    --accent: #4FD1C5;
+    --accent-soft: rgba(79,209,197,0.12);
+    --amber: #E8A33D;
+    --radius: 10px;
+    --maxw: 980px;
+    --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+    --font-body: "Inter", "Segoe UI", sans-serif;
+    --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--bg-grid) 1px, transparent 1px) 0 0/44px 44px,
+      linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px) 0 0/44px 44px,
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    letter-spacing:.04em;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:16px; height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+
+  h1,h2,h3{ font-family:var(--font-display); font-weight:600; margin:0; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:20;
+    backdrop-filter:blur(10px);
+    background:rgba(15,20,27,0.78);
+    border-bottom:1px solid var(--panel-border);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:60px;
+  }
+  .nav-mark{
+    font-family:var(--font-mono);
+    font-size:14px;
+    color:var(--text);
+    letter-spacing:.02em;
+  }
+  .nav-mark span{ color:var(--accent); }
+  .nav-links{
+    display:flex; gap:26px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--text-muted);
+  }
+  .nav-links a{ text-decoration:none; }
+  .nav-links a:hover{ color:var(--accent); }
+  @media (max-width:640px){ .nav-links{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding:96px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-kicker{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(38px, 6vw, 64px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .accent{ color:var(--accent); }
+  .hero p.tagline{
+    max-width:560px;
+    font-size:18px;
+    color:var(--text-muted);
+    margin-top:20px;
+  }
+  .hero-cta{
+    margin-top:32px;
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--font-mono);
+    font-size:13.5px;
+    padding:11px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--panel-border);
+    transition:border-color .15s ease, transform .15s ease, background .15s ease;
+  }
+  .btn-primary{
+    background:var(--accent-soft);
+    border-color:rgba(79,209,197,0.4);
+    color:var(--accent);
+  }
+  .btn-primary:hover{ background:rgba(79,209,197,0.2); transform:translateY(-1px); }
+  .btn-ghost:hover{ border-color:var(--text-faint); transform:translateY(-1px); }
+
+  /* pipeline signature diagram */
+  .pipeline{
+    margin-top:64px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:720px;
+  }
+  .pipeline .stage{
+    display:flex; flex-direction:column; align-items:center;
+    gap:10px;
+    flex:0 0 auto;
+    opacity:0;
+    transform:translateY(6px);
+    animation: reveal .6s ease forwards;
+  }
+  .pipeline .stage:nth-child(1){ animation-delay:.05s; }
+  .pipeline .stage:nth-child(3){ animation-delay:.35s; }
+  .pipeline .stage:nth-child(5){ animation-delay:.65s; }
+  .pipeline .stage:nth-child(7){ animation-delay:.95s; }
+  @keyframes reveal{ to{ opacity:1; transform:translateY(0); } }
+
+  .node{
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--panel);
+    border:2px solid var(--accent);
+    box-shadow:0 0 0 4px var(--accent-soft);
+  }
+  .stage-label{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--text-muted);
+    letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .pipeline .line{
+    flex:1 1 auto;
+    height:1px;
+    background:linear-gradient(90deg, var(--panel-border), var(--accent), var(--panel-border));
+    background-size:200% 100%;
+    margin:0 2px;
+    transform-origin:left;
+    animation: draw 1.4s ease forwards;
+    opacity:0;
+  }
+  .pipeline .line:nth-of-type(2){ animation-delay:.2s; }
+  .pipeline .line:nth-of-type(4){ animation-delay:.5s; }
+  .pipeline .line:nth-of-type(6){ animation-delay:.8s; }
+  @keyframes draw{
+    0%{ transform:scaleX(0); opacity:1; }
+    100%{ transform:scaleX(1); opacity:1; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pipeline .stage, .pipeline .line{ animation:none !important; opacity:1 !important; transform:none !important; }
+  }
+
+  @media (max-width:640px){
+    .pipeline{ flex-wrap:wrap; gap:18px 8px; }
+    .pipeline .line{ display:none; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:64px 0; border-top:1px solid var(--panel-border); }
+  section h2{ font-size:26px; margin-bottom:34px; }
+
+  /* ---------- ABOUT / STATS ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap:48px;
+  }
+  .about-grid p{ color:var(--text-muted); font-size:15.5px; max-width:52ch; }
+  .stat-strip{
+    font-family:var(--font-mono);
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:18px;
+  }
+  .stat{
+    border:1px solid var(--panel-border);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    background:var(--panel);
+  }
+  .stat .n{ font-size:22px; color:var(--accent); display:block; }
+  .stat .l{ font-size:11.5px; color:var(--text-muted); margin-top:4px; display:block; }
+
+  @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- FOCUS AREAS ---------- */
+  .focus-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  .focus-card{
+    border:1px solid var(--panel-border);
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:24px;
+    transition:border-color .15s ease;
+  }
+  .focus-card:hover{ border-color:rgba(79,209,197,0.45); }
+  .focus-card .tag{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--amber);
+    letter-spacing:.05em;
+  }
+  .focus-card h3{ font-size:18px; margin:10px 0 8px; }
+  .focus-card p{ color:var(--text-muted); font-size:14.5px; margin:0; }
+
+  @media (max-width:760px){ .focus-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- RESEARCH ---------- */
+  .research-card{
+    border:1px solid var(--panel-border);
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:28px;
+  }
+  .research-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    flex-wrap:wrap; gap:8px;
+    margin-bottom:14px;
+  }
+  .research-head h3{ font-size:19px; }
+  .research-head .meta{ font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); }
+  .research-card ul{ margin:0; padding-left:18px; color:var(--text-muted); font-size:14.5px; }
+  .research-card li{ margin-bottom:8px; }
+  .research-card li:last-child{ margin-bottom:0; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-group{ margin-bottom:22px; }
+  .skills-group:last-child{ margin-bottom:0; }
+  .skills-group .glabel{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text-faint);
+    margin-bottom:10px;
+    letter-spacing:.04em;
+  }
+  .chip-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:var(--font-mono);
+    font-size:12.5px;
+    padding:6px 12px;
+    border-radius:20px;
+    border:1px solid var(--panel-border);
+    color:var(--text-muted);
+    background:var(--panel);
+  }
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-list{ display:flex; flex-direction:column; gap:10px; }
+  .cert-row{
+    display:flex; justify-content:space-between; align-items:center;
+    gap:16px;
+    padding:16px 20px;
+    border:1px solid var(--panel-border);
+    border-radius:var(--radius);
+    background:var(--panel);
+    flex-wrap:wrap;
+  }
+  .cert-info h3{ font-size:15px; font-weight:600; }
+  .cert-info .issuer{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--text-muted);
+    margin-top:4px;
+  }
+  .cert-link{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--accent);
+    text-decoration:none;
+    border:1px solid rgba(79,209,197,0.35);
+    padding:7px 14px;
+    border-radius:7px;
+    white-space:nowrap;
+  }
+  .cert-link:hover{ background:var(--accent-soft); }
+
+  /* ---------- EDUCATION / COMMUNITY ---------- */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:760px){ .two-col{ grid-template-columns:1fr; } }
+  .info-card{
+    border:1px solid var(--panel-border);
+    background:var(--panel);
+    border-radius:var(--radius);
+    padding:24px;
+  }
+  .info-card h3{ font-size:17px; margin-bottom:6px; }
+  .info-card .sub{ font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint); margin-bottom:12px; }
+  .info-card p{ color:var(--text-muted); font-size:14.5px; margin:0; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:56px 0 64px;
+    border-top:1px solid var(--panel-border);
+  }
+  footer .foot-inner{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:20px;
+  }
+  footer h2{ font-size:24px; margin-bottom:8px; }
+  footer p{ color:var(--text-muted); font-size:14.5px; margin:0 0 20px; }
+  .foot-links{ display:flex; gap:14px; flex-wrap:wrap; }
+  .copyright{
+    font-family:var(--font-mono);
+    font-size:11.5px;
+    color:var(--text-faint);
+    margin-top:40px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">harsh<span>raj</span>/</div>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#research">research</a>
+      <a href="#skills">skills</a>
+      <a href="#certifications">certifications</a>
+      <a href="#education">education</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker">Bengaluru / Amaravati, India</div>
+    <h1>Harsh Raj<br><span class="accent">AI/ML &amp; Software Engineer.</span></h1>
+    <p class="tagline">Computer Science undergraduate building at the intersection of generative AI systems and reliable backend engineering — from agentic RAG pipelines to fault-tolerant distributed systems.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:hraj15709@gmail.com">Get in touch</a>
+      <a class="btn btn-ghost" href="https://github.com/HxrshRaj" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+
+    <div class="pipeline" aria-hidden="true">
+      <div class="stage"><div class="node"></div><div class="stage-label">RESEARCH</div></div>
+      <div class="line"></div>
+      <div class="stage"><div class="node"></div><div class="stage-label">BUILD</div></div>
+      <div class="line"></div>
+      <div class="stage"><div class="node"></div><div class="stage-label">EVALUATE</div></div>
+      <div class="line"></div>
+      <div class="stage"><div class="node"></div><div class="stage-label">SHIP</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">$ whoami</div>
+    <h2>About</h2>
+    <div class="about-grid">
+      <p>
+        I'm a Computer Science undergraduate at SRM University AP, working across two connected disciplines:
+        generative AI &amp; agentic systems, and backend software engineering. I care about building things
+        that actually run — retrieval pipelines that stay grounded, job systems that survive failure, and
+        models that get evaluated honestly rather than just demoed once. Outside of coursework, I'm active in
+        Google Developer Groups and contribute to open-source on GitHub.
+      </p>
+      <div class="stat-strip">
+        <div class="stat"><span class="n">8.93</span><span class="l">CGPA / 10.0</span></div>
+        <div class="stat"><span class="n">2027</span><span class="l">Expected Graduation</span></div>
+        <div class="stat"><span class="n">9</span><span class="l">Professional Certifications</span></div>
+        <div class="stat"><span class="n">GDG</span><span class="l">Community Member</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <div class="eyebrow">$ cat focus_areas.json</div>
+    <h2>What I work on</h2>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <div class="tag">AI / ML</div>
+        <h3>Machine Learning &amp; Deep Learning</h3>
+        <p>Predictive modeling, model evaluation and optimization, and applied statistical analysis across structured data problems.</p>
+      </div>
+      <div class="focus-card">
+        <div class="tag">GENAI</div>
+        <h3>Generative &amp; Agentic AI</h3>
+        <p>RAG pipelines, multi-agent orchestration, LLM-powered reasoning, and retrieval systems built with LangChain and vector search.</p>
+      </div>
+      <div class="focus-card">
+        <div class="tag">SYSTEMS</div>
+        <h3>Backend &amp; Distributed Systems</h3>
+        <p>Concurrency, fault tolerance, system design, and reliable service architecture — the engineering underneath intelligent systems.</p>
+      </div>
+      <div class="focus-card">
+        <div class="tag">DATA</div>
+        <h3>Data &amp; Analytics Engineering</h3>
+        <p>Data preprocessing, feature engineering, exploratory analysis, and turning raw data into decision-ready insight.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="eyebrow">$ research/log</div>
+    <h2>Research Experience</h2>
+    <div class="research-card">
+      <div class="research-head">
+        <h3>Research Intern — Computer Vision &amp; AI</h3>
+        <div class="meta">SRM University AP · Jun 2024 – Jul 2024</div>
+      </div>
+      <ul>
+        <li>Developed Python-based AI workflows using Optical Flow, Kernel Density Estimation (KDE), and Temporal Occupancy Variation (TOV) for computer vision and data-driven analysis.</li>
+        <li>Performed data preprocessing, feature engineering, model evaluation, benchmarking, and statistical analysis across AI workflows.</li>
+        <li>Designed modular computational pipelines integrating multiple sensor inputs for scalable machine learning and predictive analysis.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">$ cat skills.json</div>
+    <h2>Skills</h2>
+
+    <div class="skills-group">
+      <div class="glabel">AI / ML</div>
+      <div class="chip-row">
+        <span class="chip">Machine Learning</span><span class="chip">Deep Learning</span>
+        <span class="chip">Predictive Modeling</span><span class="chip">Model Evaluation</span>
+        <span class="chip">Model Optimization</span><span class="chip">Statistical Analysis</span>
+        <span class="chip">Scikit-learn</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="glabel">GENERATIVE AI</div>
+      <div class="chip-row">
+        <span class="chip">LLMs</span><span class="chip">RAG</span><span class="chip">Agentic AI</span>
+        <span class="chip">Multi-Agent Orchestration</span><span class="chip">LangChain</span>
+        <span class="chip">Prompt Engineering</span><span class="chip">Embeddings</span><span class="chip">Vector Search</span>
+        <span class="chip">Fine-Tuning (PEFT)</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="glabel">PROGRAMMING</div>
+      <div class="chip-row">
+        <span class="chip">Python</span><span class="chip">Java</span><span class="chip">C++</span>
+        <span class="chip">JavaScript</span><span class="chip">Go</span><span class="chip">SQL</span>
+        <span class="chip">Data Structures &amp; Algorithms</span><span class="chip">OOP</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="glabel">SYSTEMS &amp; DATA</div>
+      <div class="chip-row">
+        <span class="chip">System Design</span><span class="chip">Concurrency</span>
+        <span class="chip">Distributed Systems</span><span class="chip">Fault Tolerance</span>
+        <span class="chip">REST APIs</span><span class="chip">Pandas</span><span class="chip">NumPy</span>
+        <span class="chip">XGBoost</span><span class="chip">Feature Engineering</span>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="glabel">CLOUD &amp; TOOLS</div>
+      <div class="chip-row">
+        <span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">Linux</span>
+        <span class="chip">Git</span><span class="chip">GitHub (OSS Contributor)</span><span class="chip">Debugging</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="eyebrow">$ ls certifications/</div>
+    <h2>Certifications</h2>
+    <div class="cert-list">
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>Oracle Certified Professional: Java SE 17 Developer</h3>
+          <div class="issuer">Oracle · Issued Feb 2026</div>
+        </div>
+        <a class="cert-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=EA84C03E44678A03D9C891EB90DB4A97A1B07BACB5EEC4E4C9185D5BC339392C" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>IBM RAG and Agentic AI Professional Certificate</h3>
+          <div class="issuer">IBM · Issued Jul 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/2G5BJVF99EGP" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>IBM Generative AI Engineering Professional Certificate</h3>
+          <div class="issuer">IBM · Issued Jul 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/Y120RJBIQDWD" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>Generative AI for Software Developers Specialization</h3>
+          <div class="issuer">IBM · Issued Jun 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/IW94STPIFT0G" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>Deep Learning Specialization</h3>
+          <div class="issuer">DeepLearning.AI · Issued Jun 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/TQ77F4EDZ7X9" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>Machine Learning Hands-On</h3>
+          <div class="issuer">Coursera · Issued Jun 2026</div>
+        </div>
+        <a class="cert-link" href="https://coursera.org/share/94aab84e73d7f67b7de43745b3054e82" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>IBM AI Product Manager Professional Certificate</h3>
+          <div class="issuer">IBM · Issued Jun 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/O84YUC1SYEM6" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>Google Data Analytics Professional Certificate</h3>
+          <div class="issuer">Google · Issued Jul 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/87H9RECN4IUM" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+      <div class="cert-row">
+        <div class="cert-info">
+          <h3>Google Project Management Professional Certificate</h3>
+          <div class="issuer">Google · Issued Jul 2026</div>
+        </div>
+        <a class="cert-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/QCEXKMZNPU85" target="_blank" rel="noopener">View credential ↗</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">$ cat education.json</div>
+    <h2>Education &amp; Community</h2>
+    <div class="two-col">
+      <div class="info-card">
+        <h3>SRM University, Andhra Pradesh</h3>
+        <div class="sub">Bachelor of Technology, Computer Science and Engineering · Aug 2023 – May 2027</div>
+        <p>CGPA: 8.93 / 10.0. Coursework and research spanning computer vision, machine learning, and systems.</p>
+      </div>
+      <div class="info-card">
+        <h3>Community &amp; Open Source</h3>
+        <div class="sub">Ongoing</div>
+        <p>Active member of Google Developer Groups (GDG). Contributes to open-source projects on GitHub, alongside independent AI/ML and backend systems work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <h2>Let's talk.</h2>
+        <p>Open to AI/ML, GenAI, and software engineering internship &amp; full-time roles.</p>
+        <div class="foot-links">
+          <a class="btn btn-primary" href="mailto:hraj15709@gmail.com">hraj15709@gmail.com</a>
+          <a class="btn btn-ghost" href="https://github.com/HxrshRaj" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Harsh Raj. Built without a projects section — see resume for role-specific work.</div>
+  </div>
+</footer>
+
+</body>
+</html>
