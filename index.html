@@ -103,6 +103,90 @@
     padding:96px 0 64px;
     position:relative;
     overflow:hidden;
+    background:
+      repeating-linear-gradient(90deg,
+        rgba(0,0,0,0.14) 0px, rgba(0,0,0,0.14) 2px,
+        transparent 2px, transparent 90px),
+      repeating-linear-gradient(90deg,
+        rgba(255,255,255,0.025) 0px, transparent 3px,
+        rgba(0,0,0,0.05) 6px, transparent 9px),
+      linear-gradient(180deg, #5A3A24, #3E2817 70%, #331F12);
+    border-bottom:1px solid #2B1B0F;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse at 30% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.35) 100%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:40px;
+    align-items:start;
+    position:relative;
+    z-index:1;
+  }
+  @media (max-width:760px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .frame-wrap{ order:-1; margin:0 auto 12px; }
+  }
+
+  /* hanging framed photo */
+  .frame-wrap{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:6px;
+  }
+  .nail{
+    width:8px; height:8px;
+    border-radius:50%;
+    background:#C9A227;
+    box-shadow:0 1px 2px rgba(0,0,0,0.6);
+    margin-bottom:2px;
+  }
+  .wire{
+    width:1px;
+    height:22px;
+    background:rgba(0,0,0,0.55);
+  }
+  .frame{
+    margin-top:2px;
+    padding:14px;
+    background:linear-gradient(155deg, #C9974F, #8B5E2A 45%, #6E4A20);
+    border-radius:4px;
+    box-shadow:
+      0 18px 30px rgba(0,0,0,0.45),
+      inset 0 0 0 1px rgba(255,255,255,0.15);
+    transform:rotate(-1.2deg);
+  }
+  .frame .mat{
+    background:#F3ECDD;
+    padding:10px;
+    border-radius:2px;
+  }
+  .frame img{
+    display:block;
+    width:220px;
+    height:260px;
+    object-fit:cover;
+    border-radius:1px;
+    filter:saturate(0.94) contrast(1.03);
+  }
+  .frame .fallback{
+    width:220px; height:260px;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:#8A7A5E;
+    background:#EDE4D0;
+    padding:14px;
+    line-height:1.5;
+  }
+  @media (max-width:760px){
+    .frame img, .frame .fallback{ width:190px; height:220px; }
   }
   .hero-kicker{
     font-family:var(--font-mono);
@@ -152,7 +236,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
-    max-width:720px;
+    max-width:100%;
   }
   .pipeline .stage{
     display:flex; flex-direction:column; align-items:center;
@@ -384,31 +468,44 @@
 </nav>
 
 <header class="hero">
-  <div class="wrap">
-    <div class="hero-kicker">Bengaluru / Amaravati, India</div>
-    <h1>Harsh Raj<br><span class="accent">AI/ML &amp; Software Engineer.</span></h1>
-    <p class="tagline">Computer Science undergraduate building at the intersection of generative AI systems and reliable backend engineering — from agentic RAG pipelines to fault-tolerant distributed systems.</p>
-    <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:hraj15709@gmail.com">Get in touch</a>
-      <a class="btn btn-ghost" href="https://github.com/HxrshRaj" target="_blank" rel="noopener">GitHub ↗</a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank" rel="noopener">LinkedIn ↗</a>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="hero-kicker">Bengaluru / Amaravati, India</div>
+      <h1>Harsh Raj<br><span class="accent">AI/ML &amp; Software Engineer.</span></h1>
+      <p class="tagline">Computer Science undergraduate building at the intersection of generative AI systems and reliable backend engineering — from agentic RAG pipelines to fault-tolerant distributed systems.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="mailto:hraj15709@gmail.com">Get in touch</a>
+        <a class="btn btn-ghost" href="https://github.com/HxrshRaj" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/harsh-raj-7a26ab314" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+
+      <div class="pipeline" aria-hidden="true">
+        <div class="stage"><div class="node"></div><div class="stage-label">RESEARCH</div></div>
+        <div class="line"></div>
+        <div class="stage"><div class="node"></div><div class="stage-label">BUILD</div></div>
+        <div class="line"></div>
+        <div class="stage"><div class="node"></div><div class="stage-label">EVALUATE</div></div>
+        <div class="line"></div>
+        <div class="stage"><div class="node"></div><div class="stage-label">SHIP</div></div>
+      </div>
     </div>
 
-    <div class="pipeline" aria-hidden="true">
-      <div class="stage"><div class="node"></div><div class="stage-label">RESEARCH</div></div>
-      <div class="line"></div>
-      <div class="stage"><div class="node"></div><div class="stage-label">BUILD</div></div>
-      <div class="line"></div>
-      <div class="stage"><div class="node"></div><div class="stage-label">EVALUATE</div></div>
-      <div class="line"></div>
-      <div class="stage"><div class="node"></div><div class="stage-label">SHIP</div></div>
+    <div class="frame-wrap">
+      <div class="nail"></div>
+      <div class="wire"></div>
+      <div class="frame">
+        <div class="mat">
+          <img src="profile.png" alt="Harsh Raj"
+               onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'fallback',textContent:'Add profile.png to the repo root to show your photo here.'}))">
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
 <section id="about">
   <div class="wrap">
-    <div class="eyebrow">$ whoami</div>
+    <div class="eyebrow">Profile</div>
     <h2>About</h2>
     <div class="about-grid">
       <p>
@@ -430,7 +527,7 @@
 
 <section id="focus">
   <div class="wrap">
-    <div class="eyebrow">$ cat focus_areas.json</div>
+    <div class="eyebrow">Focus</div>
     <h2>What I work on</h2>
     <div class="focus-grid">
       <div class="focus-card">
@@ -459,7 +556,7 @@
 
 <section id="research">
   <div class="wrap">
-    <div class="eyebrow">$ research/log</div>
+    <div class="eyebrow">Experience</div>
     <h2>Research Experience</h2>
     <div class="research-card">
       <div class="research-head">
@@ -477,7 +574,7 @@
 
 <section id="skills">
   <div class="wrap">
-    <div class="eyebrow">$ cat skills.json</div>
+    <div class="eyebrow">Capabilities</div>
     <h2>Skills</h2>
 
     <div class="skills-group">
@@ -531,7 +628,7 @@
 
 <section id="certifications">
   <div class="wrap">
-    <div class="eyebrow">$ ls certifications/</div>
+    <div class="eyebrow">Credentials</div>
     <h2>Certifications</h2>
     <div class="cert-list">
 
@@ -613,7 +710,7 @@
 
 <section id="education">
   <div class="wrap">
-    <div class="eyebrow">$ cat education.json</div>
+    <div class="eyebrow">Background</div>
     <h2>Education &amp; Community</h2>
     <div class="two-col">
       <div class="info-card">
